@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="stylesheet" href="style.css">
+    <title>CRUD</title>
+</head>
+
+<body>
+
+  <header>
+    <h1>Administración de clientes</h1>
+    <img src="https://static.wixstatic.com/media/632b1b_7a7cfc03c37641d08c03c1e93378328d~mv2.png/v1/fill/w_900,h_589,al_c/632b1b_7a7cfc03c37641d08c03c1e93378328d~mv2.png" alt="">
+  </header>
+
+  <section id="containerPrincipal">
+    <div id="listClients">
+    </div>
+
+    <div id="clientSelected">
+
+      <section id="contInfo">
+
+        <!-- Agregar -->
+        <section id="AddClient">
+          <h3>Crear cliente</h3>
+          <Input id="inputNameAdd" placeholder="Nombre"></Input>
+          <Input id="inputIdAdd" placeholder="Identificacíón"></Input>
+          <Input id="inputPhoneAdd" placeholder="Télefono"></Input>
+          <button id="btnAdd">Crear</button>
+        </section>
+
+        <!-- Actualizar -->
+        
+        <section id="UpdateClient">
+          <h3>Selecciona un cliente para gestionar</h3>
+          <Input id="inputNameUpdate" placeholder="Nombre"></Input>
+          <Input id="inputIdUpdate" placeholder="Identificacíón"></Input>
+          <Input id="inputPhoneUpdate" placeholder="Télefono"></Input>
+          <button id="btnUpdate">Actualizar</button>
+          <button id="btnRemove">Eliminar</button>
+        </section>
+
+      </section>
+
+    </div>
+  </section>
+  <script src="index.js"></script>
+</body>
+</html>
