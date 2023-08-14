@@ -1,7 +1,4 @@
-window.addEventListener('DOMContentLoaded', () => {
-    leer()
-    ventanaEmergente()
-})
+window.addEventListener('DOMContentLoaded', () => leer())
 
 const API = "https://sheet.best/api/sheets/18f38fed-7379-448e-9f41-4065bf4b2cff"
 
@@ -88,22 +85,22 @@ const numeroRegExp = /^[0-9]+$/
 const btnAdd = document.getElementById("btnAdd")
 
 btnAdd.addEventListener("click", async () => {
-    const dataName = inputNameAdd.value;
-    const dataId = inputIdAdd.value;
-    const dataPhone = inputPhoneAdd.value;
+    let dataName = inputNameAdd.value;
+    let dataId = inputIdAdd.value;
+    let dataPhone = inputPhoneAdd.value;
 
     if (dataName.length === 0 || dataId.length === 0 || dataPhone.length === 0) {
-        alert("No se permiten campos vacíos");
+        ventanaEmergente("No se permiten campos vacíos", false);
     } else if (!textoRegExp.test(dataName)) {
-        alert("En el campo nombre solo se permite texto")
+        ventanaEmergente("En el campo nombre solo se permite texto", false)
     } else if (dataName.length > 40) {
-        alert("En nombre no se permiten más de 40 caracteres");
+        ventanaEmergente("En nombre no se permiten más de 40 caracteres", false);
     } else if (!numeroRegExp.test(dataId, dataPhone)) {
-        alert("En los campos identificación y télefono solo se permiten números")
+        ventanaEmergente("En los campos identificación y télefono solo se permiten números", false)
     } else if (dataId.length !== 10) {
-        alert("Ingrese una identificación valida");
+        ventanaEmergente("Ingrese una identificación valida", false);
     } else if (dataPhone.length !== 10) {
-        alert("Ingrese una télefono valido");
+        ventanaEmergente("Ingrese una télefono valido", false);
     }
     else {
         const data = {
@@ -123,13 +120,10 @@ btnAdd.addEventListener("click", async () => {
         })
             .then((r) => r.json())
             .then((data) => {
-                // The response comes here
                 console.log(data);
                 location.reload()
-                // leer()
             })
             .catch((error) => {
-                // Errors are reported there
                 console.log(error);
             });
         console.log(resAdd);
@@ -151,19 +145,19 @@ btnUpdate.addEventListener("click", async () => {
     const dataPhone = inputPhoneUpdate.value
 
     if (dataName.length === 0 || dataId.length === 0 || dataPhone.length === 0) {
-        alert("No se permiten campos vacíos");
+        ventanaEmergente("No se permiten campos vacíos", false);
     } else if (!textoRegExp.test(dataName)) {
-        alert("En el campo nombre solo se permite texto")
+        ventanaEmergente("En el campo nombre solo se permite texto", false)
     } else if (dataName.length > 40) {
-        alert("En nombre no se permiten más de 40 caracteres");
+        ventanaEmergente("En nombre no se permiten más de 40 caracteres", false);
     } else if (!numeroRegExp.test(dataId, dataPhone)) {
-        alert("En los campos identificación y télefono solo se permiten números")
+        ventanaEmergente("En los campos identificación y télefono solo se permiten números", false)
     } else if (dataId.length !== 10) {
-        alert("Ingrese una identificación valida");
+        ventanaEmergente("Ingrese una identificación valida", false);
     } else if (dataPhone.length !== 10) {
-        alert("Ingrese una télefono valido");
+        ventanaEmergente("Ingrese una télefono valido", false);
     } else if (dataName === clientes[index].Cliente && dataId === clientes[index].Identificación && dataPhone === clientes[index].Telefono) {
-        alert("Para actualizar debe cambiar algún campo")
+        ventanaEmergente("Para actualizar debe cambiar algún campo", false)
     } else {
         const data = {
             Cliente: dataName,
@@ -180,13 +174,14 @@ btnUpdate.addEventListener("click", async () => {
         })
             .then((r) => r.json())
             .then((data) => {
-                // The response comes here
                 console.log(data);
                 leer()
-                alert(`Cliente "${clientes[index].Cliente}" Actualizado`)
+                ventanaEmergente(`Cliente "${clientes[index].Cliente}" Actualizado`, true)
+                inputNameUpdate.value = ""
+                inputIdUpdate.value = ""
+                inputPhoneUpdate.value = ""
             })
             .catch((error) => {
-                // Errors are reported there
                 console.log(error);
             });
     }
@@ -195,8 +190,10 @@ btnUpdate.addEventListener("click", async () => {
 // Eliminar Cliente
 
 const btnRemove = document.getElementById("btnRemove").addEventListener("click", () => {
-    let confirmation
     const dataName = inputNameUpdate.value
+    const dataId = inputIdUpdate.value
+    const dataPhone = inputPhoneUpdate.value
+
     if (dataName !== "") {
         //Confirmación
         const contPrincipalConf = document.createElement("section")
@@ -227,8 +224,11 @@ const btnRemove = document.getElementById("btnRemove").addEventListener("click",
                 .then((data) => {
                     console.log(data);
                     leer()
-                    alert(`Cliente "${clientes[index].Cliente}" eliminado`)
+                    ventanaEmergente(`Cliente "${clientes[index].Cliente}" eliminado`, true)
                     body.removeChild(contPrincipalConf)
+                    dataName = ""
+                    dataId = ""
+                    dataPhone = ""
                 })
                 .catch((error) => {
                     console.error(error);
@@ -240,19 +240,21 @@ const btnRemove = document.getElementById("btnRemove").addEventListener("click",
         })
 
     } else {
-        alert("Selecciona un cliente para eliminar")
+        ventanaEmergente("Selecciona un cliente para eliminar", false)
     }
 })
 
-function ventanaEmergente(text) {
+function ventanaEmergente(text, value) {
+    let icon
+    value === true ? icon = "✔️" : icon = "❌"
     const window = document.createElement("div")
     const windowText = document.createElement("p")
-    window.textContent = text
+    window.textContent = text + " " + icon
     window.id = "windowShow"
 
     body.appendChild(window)
     window.appendChild(windowText)
     setTimeout(() => {
         window.id = "windowHide"
-    }, 3000);
+    }, 3500);
 }

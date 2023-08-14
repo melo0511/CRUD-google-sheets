@@ -162,6 +162,7 @@ header h1 {
 
 #AddClient h3 {
     width: 100%;
+    font-size: 22px;
     text-align: center;
 }
 
@@ -197,7 +198,9 @@ header h1 {
 
 #UpdateClient h3 {
     width: 100%;
+    font-size: 22px;
     text-align: center;
+
 }
 
 #UpdateClient input{
@@ -282,7 +285,7 @@ button{
 
 /* Ventana Emergente */
 #windowShow {
-    width: 15vw;
+    width: auto;
     height: 3.5rem;
     padding-left: 1rem;
     padding-right: 1rem;
@@ -301,9 +304,11 @@ button{
   }
   
   #windowHide {
-    width: 15vw;
+    width: auto;
     height: 3.5rem;
     background: #ffffff;
+    padding-left: 1rem;
+    padding-right: 1rem;
     font-size: 16px;
     display: flex;
     justify-content: center;
