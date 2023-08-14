@@ -1,6 +1,7 @@
 * {
     margin: 0;
     padding: 0;
+    font-family: 'Montserrat', sans-serif;
 }
 
 *::-webkit-scrollbar {
@@ -53,6 +54,7 @@ header h1 {
 #containerPrincipal {
     width: 100%;
     height: 80%;
+    position: relative;
     display: flex;
     justify-content: space-around;
     align-items: center;
@@ -61,7 +63,7 @@ header h1 {
 }
 
 #listClients {
-    width: 45%;
+    width: 47.5%;
     height: 90%;
     display: flex;
     text-align: center;
@@ -76,7 +78,7 @@ header h1 {
 }
 
 #clientSelected {
-    width: 45%;
+    width: 47.5%;
     height: 90%;
     display: flex;
     align-items: center;
@@ -86,17 +88,6 @@ header h1 {
     background: rgb(14, 123, 173);
     border: 4px solid white;
     color: white;
-}
-
-
-#contInfo {
-    width: 80%;
-    height: 80%;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    flex-direction: column;
-    background: blue;
 }
 
 #tarjetaDefault {
@@ -116,14 +107,14 @@ header h1 {
     align-items: center;
     background: rgb(70, 70, 70);
     color: white;
-    cursor: pointer;
     overflow: hidden;
     text-overflow: ellipsis;
+    font-weight: bolder;
 }
 
 .tarjeta {
     width: 100%;
-    height: 45px;
+    height: auto;
     margin: .5rem;
     display: flex;
     justify-content: space-around;
@@ -132,7 +123,9 @@ header h1 {
 
 .tarjeta p {
     width: 32.66%;
-    height: 100%;
+    min-height: 45px;
+    max-height: 200px;
+    overflow: hidden;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -141,19 +134,30 @@ header h1 {
     cursor: pointer;
     overflow: hidden;
     text-overflow: ellipsis;
+    padding: 5px solid red;
 }
 
 /* CRUD */
 
+#contInfo {
+    width: 90%;
+    height: 95%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: column;
+}
+
 /* AGREGAR */
 #AddClient {
     width: 100%;
-    height: 40%;
+    height: 50%;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
-    background: red;
+    gap: .5rem;
+    border-bottom: 1px solid white;
 }
 
 #AddClient h3 {
@@ -161,19 +165,155 @@ header h1 {
     text-align: center;
 }
 
+#AddClient input{
+    width: 30%;
+    height: 15%;
+    border-radius: 5px;
+}
+
+#AddClient button{
+    width: auto;
+    height: 18%;
+    padding-left: 10px;
+    padding-right: 10px;
+    background: transparent;
+    border: 2px solid white;
+    border-radius: 5px;
+    color: white;
+}
+
 /* ACTUALIZAR */
 
 #UpdateClient {
     width: 100%;
-    height: 60%;
+    height: 50%;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
-    background: yellow;
+    gap: .5rem;
+    border-top: 1px solid white;
 }
 
 #UpdateClient h3 {
     width: 100%;
     text-align: center;
 }
+
+#UpdateClient input{
+    width: 30%;
+    height: 15%;
+    border-radius: 5px;
+}
+
+#UpdateClient button{
+    width: auto;
+    height: 18%;
+    padding-left: 10px;
+    padding-right: 10px;
+    background: transparent;
+    border: 2px solid white;
+    border-radius: 5px;
+    color: white;
+}
+
+button{
+    cursor: pointer;
+}
+
+/* Confirmacion */
+
+#contPrincipalConf{
+    width: 100%;
+    height: 100vh;
+    background-color: #00000090;
+    backdrop-filter: blur(1px);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10;
+}
+
+#containerConfirmation{
+    width: auto;
+    height: auto;
+    padding: 20px;
+    background: rgb(14, 123, 173);
+    border: 3px solid white;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 1.2rem;
+    border-radius: 10px;
+    z-index: 20;
+}
+
+#containerConfirmation div{
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+}
+
+#containerConfirmation div button{
+    width: auto;
+    height: 2.2rem;
+    padding-left: 10px;
+    padding-right: 10px;
+    background: transparent;
+    border: 2px solid white;
+    border-radius: 5px;
+    color: white;
+}
+
+#containerConfirmation p{
+    width: 100%;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+/* Ventana Emergente */
+#windowShow {
+    width: 15vw;
+    height: 3.5rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    background: #ffffff;
+    font-size: 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    gap: 1rem;
+    top: 85%;
+    transform: translate(-50%, -50%);
+    transform: translateY(0%);
+    transition: all 500ms ease-in-out;
+    z-index: 10000;
+  }
+  
+  #windowHide {
+    width: 15vw;
+    height: 3.5rem;
+    background: #ffffff;
+    font-size: 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    gap: 1rem;
+    top: 90%;
+    transform: translate(-50%, -50%);
+    transform: translateY(+1000%);
+    transition: all 500ms ease-in-out;
+    z-index: 10000;
+    visibility: hidden;
+  }

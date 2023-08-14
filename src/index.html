@@ -2,24 +2,34 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <link rel="stylesheet" href="style.css">
-    <title>CRUD</title>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+  <title>CRUD</title>
 </head>
 
-<body>
+<body id="body">
 
   <header>
     <h1>Administración de clientes</h1>
-    <img src="https://static.wixstatic.com/media/632b1b_7a7cfc03c37641d08c03c1e93378328d~mv2.png/v1/fill/w_900,h_589,al_c/632b1b_7a7cfc03c37641d08c03c1e93378328d~mv2.png" alt="">
+    <img
+      src="https://static.wixstatic.com/media/632b1b_7a7cfc03c37641d08c03c1e93378328d~mv2.png/v1/fill/w_900,h_589,al_c/632b1b_7a7cfc03c37641d08c03c1e93378328d~mv2.png"
+      alt="">
   </header>
 
   <section id="containerPrincipal">
+
     <div id="listClients">
     </div>
 
     <div id="clientSelected">
+
+      <!-- <button><</button>
+      <button>Crear</button>
+      <button>Gestiónar</button> -->
 
       <section id="contInfo">
 
@@ -33,7 +43,7 @@
         </section>
 
         <!-- Actualizar -->
-        
+
         <section id="UpdateClient">
           <h3>Selecciona un cliente para gestionar</h3>
           <Input id="inputNameUpdate" placeholder="Nombre"></Input>
@@ -49,4 +59,5 @@
   </section>
   <script src="index.js"></script>
 </body>
+
 </html>
